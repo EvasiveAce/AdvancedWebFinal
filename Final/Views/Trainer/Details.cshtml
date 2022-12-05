@@ -1,0 +1,95 @@
+﻿@using Final.Models.Entities
+@model Final.Models.ViewModels.DetailsTrainerVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details for Trainer @Model!.Name</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-2">
+        <form asp-action="Details">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label" ></label>
+                <input asp-for="Id" class="form-control" readonly />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" readonly/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Money" class="control-label"></label>
+                <input asp-for="Money" class="form-control" readonly/>
+                <span asp-validation-for="Money" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfPokemon" class="control-label"></label>
+                <input asp-for="NumberOfPokemon" class="form-control" readonly/>
+                <span asp-validation-for="NumberOfPokemon" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to Trainer List</a>
+</div>
+
+<div>
+    @if (Model != null)
+    {
+        <h4>Pokémon</h4>
+        <a asp-action="Create" asp-controller="Pokemon" asp-route-id="@Model.Id">
+            Add Pokémon
+        </a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Level
+                    </th>
+                    <th>
+                        Dex Number
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pokemon in Model.Pokemons)
+                {
+                    <tr>
+                        <td>
+                            @pokemon.Name
+                        </td>
+                        <td>
+                            @pokemon.Level
+                        </td>
+                        <td>
+                            @pokemon.DexNumber
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Pokemon"
+                        asp-route-id="@Model.Id" asp-route-pokemonId="@pokemon.Id">Edit</a> |
+                            <a asp-action="Details" asp-controller="Pokemon"
+                        asp-route-id="@Model.Id" asp-route-pokemonId="@pokemon.Id">Details</a> |
+                            <a asp-action="Delete" asp-controller="Pokemon"
+                        asp-route-id="@Model.Id" asp-route-pokemonId="@pokemon.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+</div>
+
+@section Scripts {
+    <script src="~/js/trainerDetails.js" type="module" defer></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
