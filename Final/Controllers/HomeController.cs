@@ -13,9 +13,12 @@ namespace Final.Controllers
             _logger = logger;
         }
 
+
+        // Basically just sets the true page index to trainer rather than home
+
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Trainer");
         }
 
         public IActionResult Privacy()

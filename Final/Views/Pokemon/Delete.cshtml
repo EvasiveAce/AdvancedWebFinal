@@ -1,0 +1,128 @@
+﻿@model Final.Models.ViewModels.DeletePokemonVM
+
+@{
+    var trainer = Model.Trainer;
+    if (trainer == null) return;
+    ViewData["Title"] = $"Delete {Model.Name}";
+}
+
+<h1>Delete</h1>
+<h2>Warning</h2>
+<hr/ >
+<h3>Once data has been deleted, there is no way to recover it. </h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+        <dt class = "col-sm-2">
+            Dex Number
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DexNumber)
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nature)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nature)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ability)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ability)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            Secondary Type
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SecondaryType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Item)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Item)
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HP)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HP)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ATTACK)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ATTACK)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DEFENCE)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DEFENCE)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SPATK)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SPATK)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SPDEF)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SPDEF)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SPEED)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SPEED)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsShiny)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsShiny)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+        <input name="trainerId" value="@trainer.Id" type="hidden" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Details" asp-controller="Trainer" asp-route-id="@trainer.Id">Back to List</a>
+    </form>
+</div>

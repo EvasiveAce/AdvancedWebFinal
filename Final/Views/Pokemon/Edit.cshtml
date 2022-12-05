@@ -1,0 +1,207 @@
+﻿@model Final.Models.ViewModels.EditPokemonVM
+
+@{
+    var trainer = Model.Trainer;
+    if (trainer == null) return;
+    ViewData["Title"] = $"Edit Trainer {trainer.Name}'s {Model.Name}";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+            <label asp-for="Id" class="control-label">Trainer Id </label>
+                <input Name="trainerId" value="@trainer.Id"
+                    readonly class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" readonly/>
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Level" class="control-label"></label>
+                <input asp-for="Level" class="form-control" />
+                <span asp-validation-for="Level" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="col-sm-2 col-form-label">Gender </label>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" asp-for="Gender" type="radio" id="maleRdo" name="Gender" value="Male" checked />
+                                <label class="form-check-label" for="maleRdo">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" asp-for="Gender" type="radio" id="femaleRdo" name="Gender" value="Female" />
+                                <label class="form-check-label" for="femaleRdo">
+                                    Female
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" asp-for="Gender" type="radio" id="gemderlessRdo" name="Gender" value="Genderless" />
+                                <label class="form-check-label" for="genderlessRdo">
+                                    Genderless
+                                </label>
+                            </div>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="DexNumber" class="control-label">Dex Number</label>
+                <input asp-for="DexNumber" class="form-control" />
+                <span asp-validation-for="DexNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                        <label asp-for="Type" class="col-sm-2 col-form-label">Type: </label>
+                        <div class="col-sm-12">
+                            <select class="form-control" asp-for="Type" aria-label="Type">
+                                <option value="Normal" selected >Normal</option>
+                                <option value="Fighting">Fighting</option>
+                                <option value="Flying">Flying</option>
+                                <option value="Poison">Poison</option>
+                                <option value="Ground">Ground</option>
+                                <option value="Rock">Rock</option>
+                                <option value="Bug">Bug</option>
+                                <option value="Ghost">Ghost</option>
+                                <option value="Steel">Steel</option>
+                                <option value="Fire">Fire</option>
+                                <option value="Water">Water</option>
+                                <option value="Grass">Grass</option>
+                                <option value="Electric">Electric</option>
+                                <option value="Psychic">Psychic</option>
+                                <option value="Ice">Ice</option>
+                                <option value="Dragon">Dragon</option>
+                                <option value="Dark">Dark</option>
+                                <option value="Fairy">Fairy</option>
+                            </select>
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+            </div>
+            <div class="form-group">
+                        <label asp-for="SecondaryType" class="col-sm-2 col-form-label">Type: </label>
+                        <div class="col-sm-12">
+                            <select class="form-control" asp-for="SecondaryType" aria-label="Type">
+                                <option value=""></option>
+                                <option value="Normal">Normal</option>
+                                <option value="Fighting">Fighting</option>
+                                <option value="Flying">Flying</option>
+                                <option value="Poison">Poison</option>
+                                <option value="Ground">Ground</option>
+                                <option value="Rock">Rock</option>
+                                <option value="Bug">Bug</option>
+                                <option value="Ghost">Ghost</option>
+                                <option value="Steel">Steel</option>
+                                <option value="Fire">Fire</option>
+                                <option value="Water">Water</option>
+                                <option value="Grass">Grass</option>
+                                <option value="Electric">Electric</option>
+                                <option value="Psychic">Psychic</option>
+                                <option value="Ice">Ice</option>
+                                <option value="Dragon">Dragon</option>
+                                <option value="Dark">Dark</option>
+                                <option value="Fairy">Fairy</option>
+                            </select>
+                            <span asp-validation-for="SecondaryType" class="text-danger"></span>
+                        </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nature" class="col-sm-2 col-form-label">Nature </label>
+                        <div class="col-sm-12">
+                            <select class="form-control" asp-for="Nature" aria-label="Nature">
+                                <option value="Hardy" selected >Hardy</option>
+                                <option value="Lonely">Lonely</option>
+                                <option value="Brave">Brave</option>
+                                <option value="Adamant">Adamant</option>
+                                <option value="Naughty">Naughty</option>
+                                <option value="Bold">Bold</option>
+                                <option value="Docile">Docile</option>
+                                <option value="Relaxed">Relaxed</option>
+                                <option value="Impish">Impish</option>
+                                <option value="Lax">Lax</option>
+                                <option value="Timid">Timid</option>
+                                <option value="Hasty">Hasty</option>
+                                <option value="Serious">Serious</option>
+                                <option value="Jolly">Jolly</option>
+                                <option value="Naive">Naive</option>
+                                <option value="Modest">Modest</option>
+                                <option value="Mild">Mild</option>
+                                <option value="Quiet">Quiet</option>
+                                <option value="Bashful">Bashful</option>
+                                <option value="Rash">Rash</option>
+                                <option value="Calm">Calm</option>
+                                <option value="Gentle">Gentle</option>
+                                <option value="Sassy">Sassy</option>
+                                <option value="Careful">Careful</option>
+                                <option value="Quirky">Quirky</option>
+                            </select>
+                            <span asp-validation-for="Nature" class="text-danger"></span>
+                        </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ability" class="control-label"></label>
+                <input asp-for="Ability" class="form-control" />
+                <span asp-validation-for="Ability" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item" class="control-label"></label>
+                <input asp-for="Item" class="form-control" />
+                <span asp-validation-for="Item" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <label asp-for="HP" class="control-label"></label>
+                <input asp-for="HP" class="form-control" />
+                <span asp-validation-for="HP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ATTACK" class="control-label"></label>
+                <input asp-for="ATTACK" class="form-control" />
+                <span asp-validation-for="ATTACK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DEFENCE" class="control-label"></label>
+                <input asp-for="DEFENCE" class="form-control" />
+                <span asp-validation-for="DEFENCE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SPATK" class="control-label"></label>
+                <input asp-for="SPATK" class="form-control" />
+                <span asp-validation-for="SPATK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SPDEF" class="control-label"></label>
+                <input asp-for="SPDEF" class="form-control" />
+                <span asp-validation-for="SPDEF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SPEED" class="control-label"></label>
+                <input asp-for="SPEED" class="form-control" />
+                <span asp-validation-for="SPEED" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Details" asp-controller="Trainer"
+    asp-route-id="@trainer.Id">Back to Trainer Details</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

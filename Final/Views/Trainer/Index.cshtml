@@ -1,0 +1,51 @@
+﻿@using Final.Models.Entities
+@model IEnumerable<Final.Models.Entities.Trainer>
+
+@{
+    ViewData["Title"] = "Trainer List";
+}
+
+<h1>Trainer List</h1>
+<button type="button" class="btn btn-primary" id="btnCreateTrainer"
+    data-bs-toggle="modal"
+    data-bs-target="#createTrainerModal">
+    Create New
+</button>
+
+<div id="alertArea" class="alert alert-info" role="alert" style="display:none">
+    <span id="messageArea"></span>
+</div>
+
+<partial name="_CreateTrainerModal" model="@new Trainer()"/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Money)
+            </th>
+            <th>
+                Number of Pokemon
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tbody-trainer">
+        @foreach (var item in Model)
+        {
+            <partial name="_TrainerRow" model="@item" />
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script src="~/js/trainerDetails.js" type="module" defer></script>
+}
